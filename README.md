@@ -1,30 +1,28 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# Backend Developer Test
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+The test consists of creating an applications that provides the following:
+
+1 – Application shall provide a migration that can create and destroy two tables:
+a) Users table
+b) Job table
+
+2 – Application shall provide migrations to populate and destroy the previous tables with the provided sample data, compliant with the relations between them. So, at this example, user table has a 1 – 1 relation with job table. So, one user can have 1 job description.
+
+3 – Application shall provide an API with the 4 standard methods (GET, POST, PATCH, DELETE), i.e:
+a) GET must have 2 options: with and without user id, so the first one will respond with a list of users, and the second one, details of the specific user.
+b) POST method must enable to create a user with all needed data such as provided at sample data file.
+c) PATCH method must enable to update a user data by providing a user id.
+d) DELETE method must enable user deletion. This method should not allow to delete a user that is bounded to another as its superior. So, if user 1 has user 2 as its manager, user 2 cannot be deleted until another manager is set for user 1.
+
+4 – You can choose whatever framework, language and database you want, as long as it would make possible to run it locally at any operational system by installing dependencies and running the start command, so installers are discouraged. Also, database must be one that enables us to execute with docker container.
+
+5 – Result must be added to a public git repository and shared with us.
+
+6 – README file is a welcome plus. Also, methods to handle job data is a welcome plus.
+
+7 – The deadline for this test will be provided at the email body.
 
 ## Installation
 
@@ -35,39 +33,12 @@ $ npm install
 ## Running the app
 
 ```bash
-# development
-$ npm run start
+# 1. Copy the .env.sample to .env
+$ cp .env.sample .env
 
-# watch mode
-$ npm run start:dev
+# 2. Run the database container
+$ docker-compose up
 
-# production mode
-$ npm run start:prod
+# 3. Execute the migration
+$ npx prisma migrate dev
 ```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).

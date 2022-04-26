@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "edi-labs: debug",
+      "type": "node",
+      "request": "attach",
+      "restart": true,
+      "port": 9229,
+      "localRoot": "${workspaceFolder}",
+      "protocol": "inspector"
+    }
+  ]
+}
